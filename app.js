@@ -1,41 +1,3 @@
-/* How to write JS apps
-
-Getting the file structure in place
-- create an app.js file
-- link it to index.html
-- link jquery from CDN:
---> search online for "jQuery CDN"
---> get URL for the latest non-Beta uncompressed version of the jQuery
---> paste that URL in your index html it above your own app.js)
-
-Milestone one: create the basic structure in your app.js
-- first define the main parts of the JS code (top part is for functions definitions; bottom part is for functions usage (and document ready))
-- inside of each of them describe in plain english what are the functionalities that this app will be acheving (add items; delete items; check functions)
-- create the functions with names but no content ("function addItem() {}")
-- inside document ready specify in plain english the connection between the buttons in html and their corresponding functions
-- create the js code to suport the connections above
-- check if the connection between the html buttons and the related functions are working (place "alert("I've just activated the addItem() function") inside each one of the corresponding buttons);
-
-
-Milestone two: complete the functions definitions and test them line by line in your app.js
-- inside each functions write in plain english what are the steps to follow in order to achive the functionality
-- complete one step at a time and test it
-*/
-
-
-
-/* Basic debugging strategies
-
-debugging level 1 => check if JS syntax is correct (check console in Web Dev)
-    --> a real life example: make sure that your TV remote has batteries
-debugging level 2 => check if the targeting is working (check the connection between the HTML element and equivalent JS functionality ==> alert("here"); inside the function)
-    --> a real life example: make sure that your remote connects to your own TV
-debugging level 3 => check if the logic makes sense (check if the JS functionality returns what we expect ==> alert(VALUE-NAME); inside the function)
-    --> a real life example: make sure that when you click on the volume up button on your remote, you don't get to change channels or similar
-*/
-
-
-
 /********************************************
 Step 1 define functions and objects
 ************************************/
@@ -80,8 +42,6 @@ function addItem() {
 
         $('#shopping-list-entry').val('');
     }
-
-
 }
 // function to check items in the shopping list
 function checkItem() {
@@ -98,7 +58,6 @@ function deleteItem() {
     //alert("I've just activated the deleteItem() function");
 
     //$(this) means that on WHATEVER you just clicked (the delete one item button), go to the closest LI and remove it along with everything inside it
-
     $(this).closest('li').remove();
 }
 
