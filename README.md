@@ -25,12 +25,17 @@
 
 
 
-##Basic debugging strategies (as a real life example: let image we want to debug why the remote is not connecting to your TV)
 
-1 => check if JS syntax is correct (check console in Web Dev Tools)
---> a real life example: make sure that your TV remote has batteries
-2 => check if the targeting is working (check the connection between the HTML element and equivalent JS functionality ==> alert("here"); inside the function)
---> a real life example: make sure that your remote connects to your own TV
+
+##Basic debugging strategies
+(as a real life example: let image we want to debug why the remote is not connecting to your TV)
+
+1 check if JS syntax is correct (check console in Web Dev Tools)
+> a real life example: make sure that your TV remote has batteries
+
+2 check if the targeting is working (check the connection between the HTML element and equivalent JS functionality ==> alert("here"); inside the function)
+> a real life example: make sure that your remote connects to your own TV
+
 3 => check if the logic makes sense (check if the JS functionality returns what we expect ==> alert(VALUE-NAME); inside the function)
---> a real life example: make sure that when you click on the volume up button on your remote, you don't get to change channels or similar
+> a real life example: make sure that when you click on the volume up button on your remote, you don't get to change channels or similar
 
