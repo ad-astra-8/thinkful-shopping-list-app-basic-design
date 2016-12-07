@@ -3,7 +3,7 @@ Step 1 define functions and objects
 ************************************/
 
 var state = {
-    items: []
+    items: ["apples", "oranges", "milk", "bread"]
 }
 
 // add item function
@@ -25,10 +25,11 @@ function removeItem(state, itemName) {
 // render list function
 function renderList(state, JQueryElement) {
     var renderedHTML = state.items.map(function (item) {
+        console.log(item);
 
         var row = '';
         row += '<li>';
-        row += '<span class="shopping-item">' + item.name + '</span>';
+        row += '<span class="shopping-item">' + item + '</span>';
         row += '<div class="shopping-item-controls">';
         row += '<button class="shopping-item-toggle">';
         row += '<span class="button-label">check</span>';
@@ -51,6 +52,8 @@ Step 2 use functions and objects
 ************************************/
 
 $(document).ready(function () {
+    //when the page loads show existing items
+    renderList(state, $('.shopping-list'));
 
     /*on click on the "#js-shopping-list-form button" button */
     $('#js-shopping-list-form').on('submit keypress', function (event) {
