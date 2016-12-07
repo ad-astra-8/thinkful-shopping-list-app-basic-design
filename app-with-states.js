@@ -104,7 +104,7 @@ $(document).ready(function () {
             }
             if (itemName) {
                 /*activate function called addItem()*/
-                addItem(state, itemName);
+                addItem(state, shoppingItem);
                 /*and reder the list with the new item in it*/
                 renderList(state, $('.shopping-list'));
             }
