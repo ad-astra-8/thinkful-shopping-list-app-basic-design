@@ -115,11 +115,17 @@ $(document).ready(function () {
 
 // function to check items in the shopping list
 $('ul').on('click', 'button.shopping-item-toggle', function (event) {
-    $(this).closest('li').find('.shopping-item').toggleClass('shopping-item__checked');
+    //get the name of the shopping list item that was clicked
+    var itemName = $(this).closest('li').find('.shopping-item').text();
+    //change the state of that item to checked
+    checkItem(state, itemName);
+    /*and reder the list with the new item in it*/
+    renderList(state, $('.shopping-list'));
 });
 
 $('ul').on('click', 'button.shopping-item-delete', function (event) {
     var itemName = $(this).closest('li').find('.shopping-item').text();
     removeItem(state, itemName);
+    /*and reder the list with the new item in it*/
     renderList(state, $('.shopping-list'));
 });
