@@ -3,14 +3,31 @@ Step 1 define functions and objects
 ************************************/
 
 var state = {
-    items: ["apples", "oranges", "milk", "bread"]
+    items: [
+        {
+            name: "apples",
+            checked: false
+        },
+        {
+            name: "oranges",
+            checked: false
+        },
+        {
+            name: "milk",
+            checked: false
+        },
+        {
+            name: "bread",
+            checked: true
+        }
+    ]
 }
 
-// add item function
+// function to add items in the shopping list
 function addItem(state, itemObj) {
     state.items.push(itemObj);
 }
-// remove item function
+// function to delete items in the shopping list
 function removeItem(state, itemName) {
     var itemsArray = state.items;
     var index;
@@ -29,7 +46,11 @@ function renderList(state, JQueryElement) {
 
         var row = '';
         row += '<li>';
-        row += '<span class="shopping-item">' + item + '</span>';
+        if (item.checked == false) {
+            row += '<span class="shopping-item">' + item.name + '</span>';
+        } else {
+            row += '<span class="shopping-item shopping-item__checked">' + item.name + '</span>';
+        }
         row += '<div class="shopping-item-controls">';
         row += '<button class="shopping-item-toggle">';
         row += '<span class="button-label">check</span>';
@@ -52,6 +73,7 @@ Step 2 use functions and objects
 ************************************/
 
 $(document).ready(function () {
+
     //when the page loads show existing items
     renderList(state, $('.shopping-list'));
 
@@ -61,7 +83,11 @@ $(document).ready(function () {
     $('#js-shopping-list-form').on('submit keypress', function (event) {
         if (event.type === 'keypress' && event.which === 13 || event.type === 'submit') {
             event.preventDefault();
-            var itemName = $('#shopping-list-entry').val(); // ships
+            var itemName = $('#shopping-list-entry').val();
+            var shoppingItem = {
+                name: itemName,
+                checked: false
+            }
             if (itemName) {
                 /*activate function called addItem()*/
                 addItem(state, itemName);
@@ -73,6 +99,7 @@ $(document).ready(function () {
 });
 /*the following 2 function calls should be OUTSIDE the $(document).ready(function() because the targeted containers were created AFTER the page was loaded*/
 
+// function to check items in the shopping list
 $('ul').on('click', 'button.shopping-item-toggle', function (event) {
     $(this).closest('li').find('.shopping-item').toggleClass('shopping-item__checked');
 });
