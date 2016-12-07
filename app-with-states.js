@@ -55,32 +55,30 @@ $(document).ready(function () {
     //when the page loads show existing items
     renderList(state, $('.shopping-list'));
 
+    /*the following function call should be INSIDE the $(document).ready(function() because the targeted containers were created WHEN the page was loaded*/
+
     /*on click on the "#js-shopping-list-form button" button */
     $('#js-shopping-list-form').on('submit keypress', function (event) {
         if (event.type === 'keypress' && event.which === 13 || event.type === 'submit') {
             event.preventDefault();
             var itemName = $('#shopping-list-entry').val(); // ships
-            var shoppingItem = {
-                name: itemName,
-                checked: false
-            }
             if (itemName) {
                 /*activate function called addItem()*/
-                addItem(state, shoppingItem);
+                addItem(state, itemName);
                 /*and reder the list with the new item in it*/
                 renderList(state, $('.shopping-list'));
             }
         }
     });
+});
+/*the following 2 function calls should be OUTSIDE the $(document).ready(function() because the targeted containers were created AFTER the page was loaded*/
 
-    $('ul').on('click', 'button.shopping-item-toggle', function (event) {
-        $(this).closest('li').find('.shopping-item').toggleClass('shopping-item__checked');
-    });
+$('ul').on('click', 'button.shopping-item-toggle', function (event) {
+    $(this).closest('li').find('.shopping-item').toggleClass('shopping-item__checked');
+});
 
-    $('ul').on('click', 'button.shopping-item-delete', function (event) {
-        var itemName = $(this).closest('li').find('.shopping-item').text();
-        removeItem(state, itemName);
-        renderList(state, $('.shopping-list'));
-    });
-
+$('ul').on('click', 'button.shopping-item-delete', function (event) {
+    var itemName = $(this).closest('li').find('.shopping-item').text();
+    removeItem(state, itemName);
+    renderList(state, $('.shopping-list'));
 });
