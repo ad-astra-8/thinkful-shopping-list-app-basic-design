@@ -27,6 +27,7 @@ var state = {
 function addItem(state, itemObj) {
     state.items.push(itemObj);
 }
+
 // function to delete items in the shopping list
 function removeItem(state, itemName) {
     var itemsArray = state.items;
@@ -39,6 +40,17 @@ function removeItem(state, itemName) {
     //delete one element from the itemsArray
     itemsArray.splice(index, 1);
 }
+
+// function to check items in the shopping list
+function checkItem(state, itemName) {
+    var itemsArray = state.items;
+    for (var i = 0; i < state.items.length; i++) {
+        if (state.items[i].name === itemName) {
+            state.items[i].checked = true;
+        }
+    }
+}
+
 // render list function
 function renderList(state, JQueryElement) {
     var renderedHTML = state.items.map(function (item) {
@@ -73,6 +85,8 @@ Step 2 use functions and objects
 ************************************/
 
 $(document).ready(function () {
+
+    checkItem(state, "milk")
 
     //when the page loads show existing items
     renderList(state, $('.shopping-list'));
