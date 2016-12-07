@@ -25,14 +25,33 @@ var state = {
 
 // function to add items in the shopping list
 function addItem(state, itemObj) {
+    //check if the targeting is working
+    //    alert("I've just activated the addItem() function");
     state.items.push(itemObj);
+}
+
+// function to check items in the shopping list
+function checkItem(state, itemName) {
+    //check if the targeting is working
+    //    alert("I've just activated the checkItem() function");
+    var itemsArray = state.items;
+    for (var i = 0; i < state.items.length; i++) {
+        //find the item witht the same name as the item to be checked
+        if (state.items[i].name === itemName) {
+            //whichever was the previous state of the item, change it with the opposite of it
+            state.items[i].checked = !state.items[i].checked;
+        }
+    }
 }
 
 // function to delete items in the shopping list
 function removeItem(state, itemName) {
+    //check if the targeting is working
+    //alert("I've just activated the deleteItem() function");
     var itemsArray = state.items;
     var index;
     for (var i = 0; i < itemsArray.length; i++) {
+        //find the item witht the same name as the item to be deleted
         if (itemsArray[i].name === itemName) {
             index = i;
         }
@@ -41,20 +60,11 @@ function removeItem(state, itemName) {
     itemsArray.splice(index, 1);
 }
 
-// function to check items in the shopping list
-function checkItem(state, itemName) {
-    var itemsArray = state.items;
-    for (var i = 0; i < state.items.length; i++) {
-        if (state.items[i].name === itemName) {
-            state.items[i].checked = true;
-        }
-    }
-}
 
-// render list function
+
+// function to render shopping list
 function renderList(state, JQueryElement) {
     var renderedHTML = state.items.map(function (item) {
-        console.log(item);
 
         var row = '';
         row += '<li>';
@@ -86,8 +96,6 @@ Step 2 use functions and objects
 
 $(document).ready(function () {
 
-    checkItem(state, "milk")
-
     //when the page loads show existing items
     renderList(state, $('.shopping-list'));
 
@@ -111,9 +119,10 @@ $(document).ready(function () {
         }
     });
 });
+
 /*the following 2 function calls should be OUTSIDE the $(document).ready(function() because the targeted containers were created AFTER the page was loaded*/
 
-// function to check items in the shopping list
+/*on click on the ".shopping-item-toggle" button activate function called checkItem()*/
 $('ul').on('click', 'button.shopping-item-toggle', function (event) {
     //get the name of the shopping list item that was clicked
     var itemName = $(this).closest('li').find('.shopping-item').text();
@@ -123,6 +132,7 @@ $('ul').on('click', 'button.shopping-item-toggle', function (event) {
     renderList(state, $('.shopping-list'));
 });
 
+/*on click on the ".shopping-item-delete" button activate function called removeItem()*/
 $('ul').on('click', 'button.shopping-item-delete', function (event) {
     var itemName = $(this).closest('li').find('.shopping-item').text();
     removeItem(state, itemName);
