@@ -17,7 +17,7 @@
         - add items;
         - delete items;
         - check items
-    - [ ] create the functions with names but no content (
+    - [ ] create the functions with names but no content
         - "function addItem() {}"
     - [ ] inside document ready specify in plain english the connection between the buttons in html and their corresponding functions
         - /*on click on the "#BUTTON ID" button activate function called FUNCTION-NAME()*/
@@ -33,16 +33,16 @@
 
 
 ##Basic debugging strategies
-> as a real life example: let image we want to debug why the remote is not connecting to your TV
+> as a real life example: let image we want to connect the a remote control to a TV
 
 - check if JS syntax is correct (*check the console tab in Web Dev Tools*)
 > the real life example: check if your remote has batteries
 
 
 - check if the targeting is working (*check the connection between the HTML element and equivalent JS functionality; **Example**: alert("here") inside the function*)
-> the real life example: check if your remote connects to your own TV
+> the real life example: check if the remote connects to this very TV
 
 
 - check if the logic makes sense (*check if the JS functionality returns what we expect; **Example**: alert(VALUE-NAME) inside the function*)
-> the real life example: check if you click on the volume up button on your remote, you don't get to change channels or similar
+> the real life example: check if a click on the volume up button on the remote, the
 
