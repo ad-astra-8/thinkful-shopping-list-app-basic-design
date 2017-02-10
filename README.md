@@ -33,7 +33,7 @@
 
 
 ##Basic debugging strategies
-> as a real life example: let image we want to connect the a remote control to a TV
+> as a real life example: lets image we want to connect the a remote control to a TV
 
 - check if JS syntax is correct (*check the console tab in Web Dev Tools*)
 > the real life example: check if your remote has batteries
@@ -44,5 +44,5 @@
 
 
 - check if the logic makes sense (*check if the JS functionality returns what we expect; **Example**: alert(VALUE-NAME) inside the function*)
-> the real life example: check if a click on the volume up button on the remote, the
+> the real life example: check if a click on the volume up button on the remote, will activate the expectd functionality on the TV (not to change the channels for example)
 
