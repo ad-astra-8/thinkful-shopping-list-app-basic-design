@@ -62,29 +62,28 @@ function removeItem(state, itemName) {
 
 
 // function to render shopping list
-function renderList(state, JQueryElement) {
-    var renderedHTML = state.items.map(function (item) {
+function renderList(state) {
 
-        var row = '';
-        row += '<li>';
-        if (item.checked == false) {
-            row += '<span class="shopping-item">' + item.name + '</span>';
+    var buildTheHtmlOutput = "";
+
+    $.each(state.items, function (itemKey, itemValue) {
+        buildTheHtmlOutput += '<li>';
+        if (itemValue.checked == false) {
+            buildTheHtmlOutput += '<span class="shopping-item">' + itemValue.name + '</span>';
         } else {
-            row += '<span class="shopping-item shopping-item__checked">' + item.name + '</span>';
+            buildTheHtmlOutput += '<span class="shopping-item shopping-item__checked">' + itemValue.name + '</span>';
         }
-        row += '<div class="shopping-item-controls">';
-        row += '<button class="shopping-item-toggle">';
-        row += '<span class="button-label">check</span>';
-        row += '</button>';
-        row += '<button class="shopping-item-delete">';
-        row += '<span class="button-label">delete</span>';
-        row += '</button>';
-        row += '</div>';
-        row += '</li>';
-
-        return row;
+        buildTheHtmlOutput += '<div class="shopping-item-controls">';
+        buildTheHtmlOutput += '<button class="shopping-item-toggle">';
+        buildTheHtmlOutput += '<span class="button-label">check</span>';
+        buildTheHtmlOutput += '</button>';
+        buildTheHtmlOutput += '<button class="shopping-item-delete">';
+        buildTheHtmlOutput += '<span class="button-label">delete</span>';
+        buildTheHtmlOutput += '</button>';
+        buildTheHtmlOutput += '</div>';
+        buildTheHtmlOutput += '</li>';
     });
-    $('.shopping-list').html(renderedHTML);
+    $('.shopping-list').html(buildTheHtmlOutput);
     //reset the input field to an empty value
     $('#shopping-list-entry').val('')
 }
@@ -93,6 +92,7 @@ function renderList(state, JQueryElement) {
 Step 2 use functions and objects
 ************************************/
 
+//when the page loads do the following things
 $(document).ready(function () {
 
     //when the page loads show existing items
