@@ -102,7 +102,9 @@ $(document).ready(function () {
 
     /*on click on the "#js-shopping-list-form button" button activate function called addItem()*/
     $('#js-shopping-list-form').on('submit keypress', function (event) {
+        //if the event is a keypress and the key pressed has the code 13 (ENTER) OR if the event is a form submit ...
         if (event.type === 'keypress' && event.which === 13 || event.type === 'submit') {
+            //if the page refreshes when you submit the form use "preventDefault()" to force JavaScript to handle the form submission
             event.preventDefault();
             var itemName = $('#shopping-list-entry').val();
             var shoppingItem = {
