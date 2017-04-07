@@ -26,15 +26,14 @@ var state = {
 // function to add items in the shopping list
 function addItem(state, itemObj) {
     //check if the targeting is working
-    //    alert("I've just activated the addItem() function");
+    // alert("I've just activated the addItem() function");
     state.items.push(itemObj);
 }
 
 // function to check items in the shopping list
 function checkItem(state, itemName) {
     //check if the targeting is working
-    //    alert("I've just activated the checkItem() function");
-    var itemsArray = state.items;
+    // alert("I've just activated the checkItem() function");
     for (var i = 0; i < state.items.length; i++) {
         //find the item witht the same name as the item to be checked
         if (state.items[i].name === itemName) {
@@ -85,7 +84,7 @@ function renderList(state, JQueryElement) {
 
         return row;
     });
-    JQueryElement.html(renderedHTML);
+    $('.shopping-list').html(renderedHTML);
     //reset the input field to an empty value
     $('#shopping-list-entry').val('')
 }
@@ -97,11 +96,11 @@ Step 2 use functions and objects
 $(document).ready(function () {
 
     //when the page loads show existing items
-    renderList(state, $('.shopping-list'));
+    renderList(state);
 
     /*the following function call should be INSIDE the $(document).ready(function() because the targeted containers were created WHEN the page was loaded*/
 
-    /*on click on the "#js-shopping-list-form button" button */
+    /*on click on the "#js-shopping-list-form button" button activate function called addItem()*/
     $('#js-shopping-list-form').on('submit keypress', function (event) {
         if (event.type === 'keypress' && event.which === 13 || event.type === 'submit') {
             event.preventDefault();
@@ -114,7 +113,7 @@ $(document).ready(function () {
                 /*activate function called addItem()*/
                 addItem(state, shoppingItem);
                 /*and reder the list with the new item in it*/
-                renderList(state, $('.shopping-list'));
+                renderList(state);
             }
         }
     });
@@ -129,7 +128,7 @@ $('ul').on('click', 'button.shopping-item-toggle', function (event) {
     //change the state of that item to checked
     checkItem(state, itemName);
     /*and reder the list with the new item in it*/
-    renderList(state, $('.shopping-list'));
+    renderList(state);
 });
 
 /*on click on the ".shopping-item-delete" button activate function called removeItem()*/
@@ -137,5 +136,5 @@ $('ul').on('click', 'button.shopping-item-delete', function (event) {
     var itemName = $(this).closest('li').find('.shopping-item').text();
     removeItem(state, itemName);
     /*and reder the list with the new item in it*/
-    renderList(state, $('.shopping-list'));
+    renderList(state);
 });
