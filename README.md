@@ -1,6 +1,6 @@
-#Shopping List App
+# Shopping List App
 
-##How to write this JS app
+## How to write this JS app
 
 1. getting the file structure in place
     - [ ] create an app.js file
@@ -32,7 +32,7 @@
 
 
 
-##Basic debugging strategies
+## Basic debugging strategies
 > as a real life example: lets image we want to connect the a remote control to a TV
 
 - check if JS syntax is correct (*check the console tab in Web Dev Tools*)
